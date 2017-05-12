@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 
 from setuptools import setup
+from pyreadme import __version__
 
 setup(
       name='pyreadme',
-      version='1.0',
+      version=__version__,
       description='Simple markdown editor written in PyQt4',
       keywords='pyqt pyqt4 markdown-editor',
       url='http://github.com/ksharindam/pyreadme',
