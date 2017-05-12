@@ -1,0 +1,17 @@
+<RCC>
+<qresource>
+<file>open.png</file>
+<file>save.png</file>
+<file>save-as.png</file>
+<file>web.png</file>
+<file>quit.png</file>
+<file>preview.png</file>
+<file>bold.png</file>
+<file>italic.png</file>
+<file>code.png</file>
+<file>bullet.png</file>
+<file>number.png</file>
+<file>link.png</file>
+<file>image.png</file>
+</qresource>
+</RCC>
