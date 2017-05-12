@@ -217,7 +217,7 @@ def main():
     app = QtGui.QApplication(sys.argv)
     win = Window()
     if len(sys.argv)>1 and os.path.exists(os.path.abspath(sys.argv[-1])):
-        win.loadFile(QtCore.QString.fromUtf8(os.path.abspath(sys.argv[-1]))
+        win.loadFile(QtCore.QString.fromUtf8(os.path.abspath(sys.argv[-1])))
     sys.exit(app.exec_())
 
 if __name__ == "__main__":

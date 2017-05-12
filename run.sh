@@ -1,2 +1,2 @@
 #!/bin/sh
-./pyreadme/main.py "$@"
+./pyreadme/main.py README.md "$@"
