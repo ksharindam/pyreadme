@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=pyReadMe
+Comment=Simple MarkDown Editor
+Exec=pyreadme %f
+Icon=accessories-text-editor
+Categories=Utility;
+Terminal=false
+StartupNotify=false

@@ -7,15 +7,26 @@ setup(
       name='pyreadme',
       version=__version__,
       description='Simple markdown editor written in PyQt4',
+      long_description='Simple markdown editor written in PyQt4',
       keywords='pyqt pyqt4 markdown-editor',
       url='http://github.com/ksharindam/pyreadme',
       author='Arindam Chaudhuri',
       author_email='ksharindam@gmail.com',
       license='GPLv3',
-      packages=['pyreadme'],
 #      install_requires=['PyQt4',      ],
+      classifiers=[
+      'Development Status :: 5 - Production/Stable',
+      'Environment :: X11 Applications :: Qt',
+      'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
+      'Operating System :: POSIX :: Linux',
+      'Programming Language :: Python :: 2.7',
+      ],
+      packages=['pyreadme'],
       entry_points={
           'console_scripts': ['pyreadme=pyreadme.main:main'],
       },
-#      include_package_data=True,
+      data_files=[
+                 ('share/applications', ['files/pyreadme.desktop']),
+      ],
+      include_package_data=True,
       zip_safe=False)

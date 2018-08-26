@@ -1,7 +1,9 @@
 # PyReadMe Markdown Editor
 A simple markdown editor written in pyqt4
 
-**Dependency** = python-qt4, python-markdown 
+**Dependency**  
+* python-qt4  
+* python-markdown  
 
 ### Description
 This editor is aimed at ease of use, faster file loading, very short startup time and low disk usage.  
@@ -13,10 +15,6 @@ And then run following command..
 
 To uninstall run..  
    `sudo pip uninstall pyreadme`
-
-### Download .deb Package
-  You can directly download debian package for debian based distros and install it.  
-  Download it [here](https://github.com/ksharindam/pyreadme/releases)  
 
 ### Usage
 To run after installing, type command..  

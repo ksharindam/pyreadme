@@ -8,10 +8,10 @@ Debian Dependency = python-qt4, python-markdown
 
 Description = A Simple markdown editor written in PyQt4
 Changes :
-        
+        Can turn off syntax highlighting for simple text files.
 
 ...........................................................................
-|   Copyright (C) 2016-2017 Arindam Chaudhuri <ksharindam@gmail.com>       |
+|   Copyright (C) 2017-2018 Arindam Chaudhuri <ksharindam@gmail.com>       |
 |                                                                          |
 |   This program is free software: you can redistribute it and/or modify   |
 |   it under the terms of the GNU General Public License as published by   |
@@ -30,4 +30,4 @@ Changes :
 # TODO:
 #       Text wrap, word wrap
 
-__version__ = '1.0.1'
+__version__ = '1.0.2'

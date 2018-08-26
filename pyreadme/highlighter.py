@@ -7,8 +7,9 @@ class MarkdownHighlighter(QSyntaxHighlighter):
 
 
     def __init__(self, parent=None):
-   
+
         super(MarkdownHighlighter, self).__init__(parent)
+        self.highlighter_enabled = True
 
         self.font_color             = '#000'
         self.link_color             = '#0000FF'
@@ -99,6 +100,7 @@ class MarkdownHighlighter(QSyntaxHighlighter):
             In this case for each type of formatting start and end pos of each text block is
             stored in a list (formatted_blocks). Then an start/end to next start/end pos is
             considered as a text block, then all required formattings are applied to that block"""
+        if not self.highlighter_enabled: return
 
         self.setCurrentBlockState(0)
         formatted_blocks = []
@@ -124,4 +126,6 @@ class MarkdownHighlighter(QSyntaxHighlighter):
             format = self.getFormat(format_list)
             self.setFormat(pos, indices[i+1]-pos, format)
 
+    def enableHighlighter(self, enable):
+        self.highlighter_enabled = enable
 

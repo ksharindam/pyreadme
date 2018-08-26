@@ -165,6 +165,10 @@ class Window(QtGui.QMainWindow, Ui_MainWindow):
     def loadFile(self, filename):
         with open(filename, 'r') as doc:
             text = doc.read()
+        if filename.endsWith('.md'):
+            self.textEdit.highlighter.enableHighlighter(True)
+        else:
+            self.textEdit.highlighter.enableHighlighter(False)
         self.textEdit.setText(text)
         self.setWindowTitle(filename)
         self.filename = filename
@@ -211,7 +215,7 @@ class TextEdit(QtGui.QTextEdit):
     def __init__(self, parent):
         QtGui.QTextEdit.__init__(self, parent)
         self.setTabStopWidth(32)
-        highlighter.MarkdownHighlighter(self)
+        self.highlighter = highlighter.MarkdownHighlighter(self)
 
 def main():
     app = QtGui.QApplication(sys.argv)
