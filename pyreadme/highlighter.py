@@ -4,8 +4,7 @@ from PyQt4.QtGui import *
 from PyQt4.QtCore import *
 
 class MarkdownHighlighter(QSyntaxHighlighter):
-
-
+    ''' QTextEdit requires this Syntax Highlighter '''
     def __init__(self, parent=None):
 
         super(MarkdownHighlighter, self).__init__(parent)
@@ -31,18 +30,18 @@ class MarkdownHighlighter(QSyntaxHighlighter):
         self.highlightingRules.append((QRegExp("^####[^#].*$"), 'h4'))
         self.highlightingRules.append((QRegExp("^#####[^#].*$"), 'h5'))
         self.highlightingRules.append((QRegExp("^######.*$"), 'h6'))
-        
-        # font 
+
+        # font
         #fontReg = QRegExp(".")
         #fontReg.setMinimal(True)
         #self.highlightingRules.append((fontReg, 'font'))
 
-        # italic        
+        # italic
         italicReg = QRegExp("(_.+_)|([^*]\*[^*].*[^*]\*[^*])")
         italicReg.setMinimal(True)
-        self.highlightingRules.append((italicReg, 'italic')) 
+        self.highlightingRules.append((italicReg, 'italic'))
 
-        # bold        
+        # bold
         boldReg = QRegExp("\*\*.+\*\*")
         boldReg.setMinimal(True)
         self.highlightingRules.append((boldReg, 'bold'))
@@ -59,7 +58,7 @@ class MarkdownHighlighter(QSyntaxHighlighter):
 
         # Code Block
         self.highlightingRules.append((QRegExp("^    .+$"), 'code-block'))
-        
+
     def applyBold(self, charFormat):
         charFormat.setFontWeight(75)
     def applyItalic(self, charFormat):
@@ -93,7 +92,7 @@ class MarkdownHighlighter(QSyntaxHighlighter):
         return charFormat
 
     def highlightBlock(self, text):
-        """ HighlightBlock became complex due to implementation of combined formatting 
+        """ HighlightBlock became complex due to implementation of combined formatting
             a quick _brown fox **jumps over** the lazy__ dog
             above markdown text has brown fox with only itaic and jumps over with bold-italic
             formats.
@@ -106,7 +105,7 @@ class MarkdownHighlighter(QSyntaxHighlighter):
         formatted_blocks = []
         for expression, format in self.highlightingRules:
             index = expression.indexIn(text)
-            
+
             while index >= 0:
 
                 length = expression.matchedLength()

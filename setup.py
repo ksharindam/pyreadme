@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 from setuptools import setup
 from pyreadme import __version__
 
@@ -13,13 +11,13 @@ setup(
       author='Arindam Chaudhuri',
       author_email='ksharindam@gmail.com',
       license='GPLv3',
-#      install_requires=['PyQt4',      ],
+      install_requires=['markdown'],
       classifiers=[
       'Development Status :: 5 - Production/Stable',
       'Environment :: X11 Applications :: Qt',
       'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
       'Operating System :: POSIX :: Linux',
-      'Programming Language :: Python :: 2.7',
+      'Programming Language :: Python :: 3.7',
       ],
       packages=['pyreadme'],
       entry_points={

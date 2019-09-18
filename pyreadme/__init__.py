@@ -1,17 +1,17 @@
-#!/usr/bin/env python
 """
 Name = PyReadMe Markdown Editor
 Executable Command = pyreadme
 Package Name = pyreadme
 Python Module Name = pyreadme
-Debian Dependency = python-qt4, python-markdown
+Debian Dependency = python3-pyqt4
+Python Dependency = markdown
 
 Description = A Simple markdown editor written in PyQt4
 Changes :
-        Can turn off syntax highlighting for simple text files.
+v2.0    Initial Port to python3
 
 ...........................................................................
-|   Copyright (C) 2017-2018 Arindam Chaudhuri <ksharindam@gmail.com>       |
+|   Copyright (C) 2017-2019 Arindam Chaudhuri <ksharindam@gmail.com>       |
 |                                                                          |
 |   This program is free software: you can redistribute it and/or modify   |
 |   it under the terms of the GNU General Public License as published by   |
@@ -30,4 +30,4 @@ Changes :
 # TODO:
 #       Text wrap, word wrap
 
-__version__ = '1.0.2'
+__version__ = '2.0'

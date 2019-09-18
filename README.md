@@ -2,8 +2,8 @@
 A simple markdown editor written in pyqt4
 
 **Dependency**  
-* python-qt4  
-* python-markdown  
+* python3-pyqt4  
+* python3-markdown (pip automatically installs markdown)  
 
 ### Description
 This editor is aimed at ease of use, faster file loading, very short startup time and low disk usage.  
@@ -11,10 +11,10 @@ This editor is aimed at ease of use, faster file loading, very short startup tim
 ### Installation
 To Install this program open terminal inside pyreadme-master directory.  
 And then run following command..  
-   `sudo pip install .`  
+   `sudo pip3 install .`  
 
 To uninstall run..  
-   `sudo pip uninstall pyreadme`
+   `sudo pip3 uninstall pyreadme`
 
 ### Usage
 To run after installing, type command..  

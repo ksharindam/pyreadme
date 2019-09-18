@@ -20,23 +20,36 @@
      <x>0</x>
      <y>0</y>
      <width>640</width>
-     <height>24</height>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
     <property name="title">
      <string>&amp;File</string>
     </property>
+    <addaction name="openFileAction"/>
+    <addaction name="saveFileAction"/>
+    <addaction name="saveFileAsAction"/>
+    <addaction name="exportHtmlAction"/>
+    <addaction name="closeAction"/>
    </widget>
    <widget class="QMenu" name="menuView">
     <property name="title">
      <string>View</string>
     </property>
+    <addaction name="previewModeAction"/>
    </widget>
    <widget class="QMenu" name="menuFormat">
     <property name="title">
      <string>Format</string>
     </property>
+    <addaction name="boldFmtAction"/>
+    <addaction name="italicFmtAction"/>
+    <addaction name="codeFmtAction"/>
+    <addaction name="ulistFmtAction"/>
+    <addaction name="olistFmtAction"/>
+    <addaction name="linkFmtAction"/>
+    <addaction name="imageFmtAction"/>
    </widget>
    <addaction name="menu_File"/>
    <addaction name="menuView"/>
@@ -52,8 +65,161 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="openFileAction"/>
+   <addaction name="saveFileAction"/>
+   <addaction name="saveFileAsAction"/>
+   <addaction name="separator"/>
+   <addaction name="previewModeAction"/>
+   <addaction name="separator"/>
+   <addaction name="boldFmtAction"/>
+   <addaction name="italicFmtAction"/>
+   <addaction name="ulistFmtAction"/>
+   <addaction name="olistFmtAction"/>
+   <addaction name="codeFmtAction"/>
+   <addaction name="linkFmtAction"/>
+   <addaction name="imageFmtAction"/>
   </widget>
+  <action name="openFileAction">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/open.png</normaloff>:/open.png</iconset>
+   </property>
+   <property name="text">
+    <string>Open</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="saveFileAction">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/save.png</normaloff>:/save.png</iconset>
+   </property>
+   <property name="text">
+    <string>Save</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="saveFileAsAction">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/save-as.png</normaloff>:/save-as.png</iconset>
+   </property>
+   <property name="text">
+    <string>Save As...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+S</string>
+   </property>
+  </action>
+  <action name="exportHtmlAction">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/web.png</normaloff>:/web.png</iconset>
+   </property>
+   <property name="text">
+    <string>Export Html</string>
+   </property>
+  </action>
+  <action name="closeAction">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/quit.png</normaloff>:/quit.png</iconset>
+   </property>
+   <property name="text">
+    <string>Quit</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+  </action>
+  <action name="previewModeAction">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/preview.png</normaloff>:/preview.png</iconset>
+   </property>
+   <property name="text">
+    <string>Preview Mode</string>
+   </property>
+  </action>
+  <action name="boldFmtAction">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/bold.png</normaloff>:/bold.png</iconset>
+   </property>
+   <property name="text">
+    <string>Bold</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+B</string>
+   </property>
+  </action>
+  <action name="italicFmtAction">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/italic.png</normaloff>:/italic.png</iconset>
+   </property>
+   <property name="text">
+    <string>Italic</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+I</string>
+   </property>
+  </action>
+  <action name="codeFmtAction">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/code.png</normaloff>:/code.png</iconset>
+   </property>
+   <property name="text">
+    <string>Inline Code</string>
+   </property>
+  </action>
+  <action name="ulistFmtAction">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/bullet.png</normaloff>:/bullet.png</iconset>
+   </property>
+   <property name="text">
+    <string>Unordered List</string>
+   </property>
+  </action>
+  <action name="olistFmtAction">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/number.png</normaloff>:/number.png</iconset>
+   </property>
+   <property name="text">
+    <string>Ordered List</string>
+   </property>
+  </action>
+  <action name="linkFmtAction">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/link.png</normaloff>:/link.png</iconset>
+   </property>
+   <property name="text">
+    <string>Insert Link</string>
+   </property>
+  </action>
+  <action name="imageFmtAction">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/image.png</normaloff>:/image.png</iconset>
+   </property>
+   <property name="text">
+    <string>Insert Image</string>
+   </property>
+  </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

@@ -1,21 +1,20 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import sys, os
-
+import markdown
 from PyQt4 import QtCore, QtGui
-from ui_mainwindow import Ui_MainWindow
-import markdown, highlighter, resources
 
-HOMEDIR = os.environ['HOME']
+sys.path.append(os.path.dirname(__file__))
+from ui_mainwindow import Ui_MainWindow
+import highlighter, resources_rc
+
+HOMEDIR = os.path.expanduser('~')
 
 class Window(QtGui.QMainWindow, Ui_MainWindow):
     def __init__(self):
         QtGui.QMainWindow.__init__(self)
         self.filename = HOMEDIR
-        self.setupUi()
-        self.show()
-
-    def setupUi(self):
-        Ui_MainWindow.setupUi(self, self)
+        # setup ui
+        self.setupUi(self)
         self.horizontalLayout = QtGui.QHBoxLayout(self.centralwidget)
         self.horizontalLayout.setContentsMargins(4,0,0,0)
         self.textEdit = TextEdit(self.centralwidget)
@@ -24,93 +23,29 @@ class Window(QtGui.QMainWindow, Ui_MainWindow):
         self.horizontalLayout.addWidget(self.textEdit)
         self.horizontalLayout.addWidget(self.textView)
         self.textView.hide()
-        # Create actions
-        self.openFileAction = QtGui.QAction(QtGui.QIcon(':/open.png'), 'Open', self)
-        self.openFileAction.setShortcut('Ctrl+O')
+
+        # Connect Actions to slots
         self.openFileAction.triggered.connect(self.openFile)
-
-        self.saveFileAction = QtGui.QAction(QtGui.QIcon(':/save.png'), 'Save', self)
-        self.saveFileAction.setShortcut('Ctrl+S')
         self.saveFileAction.triggered.connect(self.saveFile)
-
-        self.saveFileAsAction = QtGui.QAction(QtGui.QIcon(':/save-as.png'), 'Save As', self)
-        self.saveFileAsAction.setShortcut('Ctrl+Shift+S')
         self.saveFileAsAction.triggered.connect(self.saveFileAs)
-
-        self.exportHtmlAction = QtGui.QAction(QtGui.QIcon(':/web.png'), 'Export Html', self)
         self.exportHtmlAction.triggered.connect(self.exportHtml)
-
-        self.closeAction = QtGui.QAction(QtGui.QIcon(':/quit.png'), 'Quit', self)
-        self.closeAction.setShortcut('Ctrl+Q')
         self.closeAction.triggered.connect(self.close)
-
-        self.previewModeAction = QtGui.QAction(QtGui.QIcon(':/preview.png'), 'Preview Mode', self)
-        self.previewModeAction.setCheckable(True)
-        #self.previewModeAction.setShortcut('Ctrl+Q')
         self.previewModeAction.triggered.connect(self.togglePreviewMode)
-
-        self.boldFmtAction = QtGui.QAction(QtGui.QIcon(':/bold.png'), 'Bold', self)
-        self.boldFmtAction.setShortcut('Ctrl+B')
         self.boldFmtAction.triggered.connect(self.setBold)
-
-        self.italicFmtAction = QtGui.QAction(QtGui.QIcon(':/italic.png'), 'Italic', self)
-        self.italicFmtAction.setShortcut('Ctrl+I')
         self.italicFmtAction.triggered.connect(self.setItalic)
-
-        self.codeFmtAction = QtGui.QAction(QtGui.QIcon(':/code.png'), 'Inline Code', self)
-        #self.codeFmtAction.setShortcut('Ctrl+I')
         self.codeFmtAction.triggered.connect(self.setCode)
-
-        self.ulistFmtAction = QtGui.QAction(QtGui.QIcon(':/bullet.png'), 'Unordered List', self)
-        #self.ulistFmtAction.setShortcut('Ctrl+I')
         self.ulistFmtAction.triggered.connect(self.setUlist)
-
-        self.olistFmtAction = QtGui.QAction(QtGui.QIcon(':/number.png'), 'Ordered List', self)
-        #self.olistFmtAction.setShortcut('Ctrl+I')
         self.olistFmtAction.triggered.connect(self.setOlist)
-
-        self.linkFmtAction = QtGui.QAction(QtGui.QIcon(':/link.png'), 'Insert Link', self)
-        #self.linkFmtAction.setShortcut('Ctrl+I')
         self.linkFmtAction.triggered.connect(self.setLink)
-
-        self.imageFmtAction = QtGui.QAction(QtGui.QIcon(':/image.png'), 'Insert Image', self)
-        #self.imageFmtAction.setShortcut('Ctrl+I')
         self.imageFmtAction.triggered.connect(self.setImage)
 
-        # Add menu actions
-        self.menu_File.addAction(self.openFileAction)
-        self.menu_File.addAction(self.saveFileAction)
-        self.menu_File.addAction(self.saveFileAsAction)
-        self.menu_File.addAction(self.exportHtmlAction)
-        self.menu_File.addAction(self.closeAction)
-        self.menuView.addAction(self.previewModeAction)
-        self.menuFormat.addAction(self.boldFmtAction)
-        self.menuFormat.addAction(self.italicFmtAction)
-        self.menuFormat.addAction(self.codeFmtAction)
-        self.menuFormat.addAction(self.ulistFmtAction)
-        self.menuFormat.addAction(self.olistFmtAction)
-        self.menuFormat.addAction(self.linkFmtAction)
-        self.menuFormat.addAction(self.imageFmtAction)
-
         # Add toolbar actions
-        self.toolBar.addAction(self.openFileAction)
-        self.toolBar.addAction(self.saveFileAction)
-        self.toolBar.addAction(self.saveFileAsAction)
-        self.toolBar.addSeparator()
-        self.toolBar.addAction(self.previewModeAction)
-        self.toolBar.addSeparator()
-        self.toolBar.addAction(self.boldFmtAction)
-        self.toolBar.addAction(self.italicFmtAction)
-        self.toolBar.addAction(self.codeFmtAction)
-        self.toolBar.addAction(self.ulistFmtAction)
-        self.toolBar.addAction(self.olistFmtAction)
-        self.toolBar.addAction(self.linkFmtAction)
-        self.toolBar.addAction(self.imageFmtAction)
         spacer = QtGui.QWidget(self.toolBar)
         spacer.setSizePolicy(1|2|4,1|4)
         self.toolBar.addWidget(spacer)
         self.toolBar.addAction(self.closeAction)
-        # Connect Signals
+        # Show window
+        self.show()
 
     def onTextSelect(self):
         cur = self.textEdit.textCursor()
@@ -145,7 +80,7 @@ class Window(QtGui.QMainWindow, Ui_MainWindow):
         cur.setPosition(anc)
         cur.movePosition(3)
         cur.setPosition(pos, 1)
-        text = pattern + unicode(cur.selectedText())
+        text = pattern + cur.selectedText()
         text = ('\n' + pattern).join(text.splitlines())
         cur.insertText(text)
         self.textEdit.setTextCursor(cur)
@@ -159,13 +94,13 @@ class Window(QtGui.QMainWindow, Ui_MainWindow):
     def openFile(self):
         filename = QtGui.QFileDialog.getOpenFileName(self, "Select File to Open", self.filename,
                                       "All Files (*);;Markdown Files (*.md);;HTML Files (*.html *.htm)" )
-        if not filename.isEmpty():
-            self.loadFile(filename)
+        if filename == '': return
+        self.loadFile(filename)
 
     def loadFile(self, filename):
         with open(filename, 'r') as doc:
             text = doc.read()
-        if filename.endsWith('.md'):
+        if filename.endswith('.md'):
             self.textEdit.highlighter.enableHighlighter(True)
         else:
             self.textEdit.highlighter.enableHighlighter(False)
@@ -177,8 +112,8 @@ class Window(QtGui.QMainWindow, Ui_MainWindow):
     def saveFileAs(self):
         filename = QtGui.QFileDialog.getSaveFileName(self, "Select File to Save", self.filename,
                                       "All Files (*);;Markdown Files (*.md)" )
-        if filename.isEmpty(): return
-        self.filename = filename        
+        if filename == '': return
+        self.filename = filename
         self.setWindowTitle(filename)
         self.saveFile()
 
@@ -186,23 +121,23 @@ class Window(QtGui.QMainWindow, Ui_MainWindow):
         if self.filename == HOMEDIR:
             self.saveFileAs()
             return
-        text = self.textEdit.toPlainText().toUtf8()
+        text = self.textEdit.toPlainText()
         with open(self.filename, 'w') as doc:
             doc.write(text)
 
     def exportHtml(self):
-        name = os.path.splitext(unicode(self.filename))[0] + '.html'
+        name = os.path.splitext(self.filename)[0] + '.html'
         filename = QtGui.QFileDialog.getSaveFileName(self, "Select File to Save", name,
                                       "HTML Files (*.html *.htm)" )
-        if filename.isEmpty(): return
-        text = unicode(self.textEdit.toPlainText())
+        if filename == '': return
+        text = self.textEdit.toPlainText()
         html = markdown.markdown(text)
         with open(filename, 'w') as doc:
             doc.write(html)
 
     def togglePreviewMode(self, checked):
         if checked:
-            text = unicode(self.textEdit.toPlainText())
+            text = self.textEdit.toPlainText()
             html = markdown.markdown(text)
             self.textEdit.hide()
             self.textView.show()
@@ -221,7 +156,7 @@ def main():
     app = QtGui.QApplication(sys.argv)
     win = Window()
     if len(sys.argv)>1 and os.path.exists(os.path.abspath(sys.argv[-1])):
-        win.loadFile(QtCore.QString.fromUtf8(os.path.abspath(sys.argv[-1])))
+        win.loadFile(os.path.abspath(sys.argv[-1]))
     sys.exit(app.exec_())
 
 if __name__ == "__main__":
