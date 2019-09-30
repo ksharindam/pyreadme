@@ -21,7 +21,7 @@ class Window(QMainWindow, Ui_MainWindow):
         self.horizontalLayout = QHBoxLayout(self.centralwidget)
         self.horizontalLayout.setContentsMargins(4,0,0,0)
         self.textEdit = TextEdit(self.centralwidget)
-        self.textView = TextView(self.centralwidget)
+        self.textView = QTextEdit(self.centralwidget)
         self.textView.setReadOnly(True)
         self.horizontalLayout.addWidget(self.textEdit)
         self.horizontalLayout.addWidget(self.textView)
@@ -157,21 +157,6 @@ class TextEdit(QTextEdit):
         self.setTabStopWidth(32)
         self.highlighter = highlighter.MarkdownHighlighter(self)
 
-class TextView(QTextEdit):
-    def __init__(self, parent):
-        QTextEdit.__init__(self, parent)
-        self.setTabStopWidth(32)
-
-    def loadResource(self, res_type, url):
-        """ this function is reimplemented and called internally by QTextEdit """
-        if res_type == 2 and os.path.exists(url.toString()):
-            #print(url.toString())
-            img_file = open(url.toString(), 'rb')
-            data = img_file.read()
-            img_file.close()
-            #self.document().addResource(res_type, url, QtCore.QVariant(data))
-            #self.viewport().update()    # force repaint to show image
-        return QTextEdit.loadResource(self, res_type, url)
 
 def main():
     app = QApplication(sys.argv)
