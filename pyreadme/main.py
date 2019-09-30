@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 import sys, os
 import markdown
-from PyQt4 import QtCore, QtGui
+from PyQt4 import QtCore
+from PyQt4.QtGui import ( QApplication, QMainWindow, QHBoxLayout, QWidget, QTextEdit,
+    QFileDialog
+)
 
 sys.path.append(os.path.dirname(__file__))
 from ui_mainwindow import Ui_MainWindow
@@ -9,16 +12,16 @@ import highlighter, resources_rc
 
 HOMEDIR = os.path.expanduser('~')
 
-class Window(QtGui.QMainWindow, Ui_MainWindow):
+class Window(QMainWindow, Ui_MainWindow):
     def __init__(self):
-        QtGui.QMainWindow.__init__(self)
+        QMainWindow.__init__(self)
         self.filename = HOMEDIR
         # setup ui
         self.setupUi(self)
-        self.horizontalLayout = QtGui.QHBoxLayout(self.centralwidget)
+        self.horizontalLayout = QHBoxLayout(self.centralwidget)
         self.horizontalLayout.setContentsMargins(4,0,0,0)
         self.textEdit = TextEdit(self.centralwidget)
-        self.textView = QtGui.QTextEdit(self.centralwidget)
+        self.textView = TextView(self.centralwidget)
         self.textView.setReadOnly(True)
         self.horizontalLayout.addWidget(self.textEdit)
         self.horizontalLayout.addWidget(self.textView)
@@ -40,7 +43,7 @@ class Window(QtGui.QMainWindow, Ui_MainWindow):
         self.imageFmtAction.triggered.connect(self.setImage)
 
         # Add toolbar actions
-        spacer = QtGui.QWidget(self.toolBar)
+        spacer = QWidget(self.toolBar)
         spacer.setSizePolicy(1|2|4,1|4)
         self.toolBar.addWidget(spacer)
         self.toolBar.addAction(self.closeAction)
@@ -92,7 +95,7 @@ class Window(QtGui.QMainWindow, Ui_MainWindow):
         self.formatText('![', ']()')
 
     def openFile(self):
-        filename = QtGui.QFileDialog.getOpenFileName(self, "Select File to Open", self.filename,
+        filename = QFileDialog.getOpenFileName(self, "Select File to Open", self.filename,
                                       "All Files (*);;Markdown Files (*.md);;HTML Files (*.html *.htm)" )
         if filename == '': return
         self.loadFile(filename)
@@ -107,10 +110,12 @@ class Window(QtGui.QMainWindow, Ui_MainWindow):
         self.textEdit.setText(text)
         self.setWindowTitle(filename)
         self.filename = filename
+        os.chdir(os.path.dirname(filename))
         self.previewModeAction.setChecked(False)
+        self.togglePreviewMode(False)
 
     def saveFileAs(self):
-        filename = QtGui.QFileDialog.getSaveFileName(self, "Select File to Save", self.filename,
+        filename = QFileDialog.getSaveFileName(self, "Select File to Save", self.filename,
                                       "All Files (*);;Markdown Files (*.md)" )
         if filename == '': return
         self.filename = filename
@@ -127,7 +132,7 @@ class Window(QtGui.QMainWindow, Ui_MainWindow):
 
     def exportHtml(self):
         name = os.path.splitext(self.filename)[0] + '.html'
-        filename = QtGui.QFileDialog.getSaveFileName(self, "Select File to Save", name,
+        filename = QFileDialog.getSaveFileName(self, "Select File to Save", name,
                                       "HTML Files (*.html *.htm)" )
         if filename == '': return
         text = self.textEdit.toPlainText()
@@ -146,14 +151,30 @@ class Window(QtGui.QMainWindow, Ui_MainWindow):
             self.textView.hide()
             self.textEdit.show()
 
-class TextEdit(QtGui.QTextEdit):
+class TextEdit(QTextEdit):
     def __init__(self, parent):
-        QtGui.QTextEdit.__init__(self, parent)
+        QTextEdit.__init__(self, parent)
         self.setTabStopWidth(32)
         self.highlighter = highlighter.MarkdownHighlighter(self)
 
+class TextView(QTextEdit):
+    def __init__(self, parent):
+        QTextEdit.__init__(self, parent)
+        self.setTabStopWidth(32)
+
+    def loadResource(self, res_type, url):
+        """ this function is reimplemented and called internally by QTextEdit """
+        if res_type == 2 and os.path.exists(url.toString()):
+            #print(url.toString())
+            img_file = open(url.toString(), 'rb')
+            data = img_file.read()
+            img_file.close()
+            #self.document().addResource(res_type, url, QtCore.QVariant(data))
+            #self.viewport().update()    # force repaint to show image
+        return QTextEdit.loadResource(self, res_type, url)
+
 def main():
-    app = QtGui.QApplication(sys.argv)
+    app = QApplication(sys.argv)
     win = Window()
     if len(sys.argv)>1 and os.path.exists(os.path.abspath(sys.argv[-1])):
         win.loadFile(os.path.abspath(sys.argv[-1]))

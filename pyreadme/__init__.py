@@ -8,6 +8,7 @@ Python Dependency = markdown
 
 Description = A Simple markdown editor written in PyQt4
 Changes :
+v2.1    loads local images in markdown preview mode
 v2.0    Initial Port to python3
 
 ...........................................................................
@@ -30,4 +31,4 @@ v2.0    Initial Port to python3
 # TODO:
 #       Text wrap, word wrap
 
-__version__ = '2.0'
+__version__ = '2.1'
