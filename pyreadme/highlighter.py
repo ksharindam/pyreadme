@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from PyQt4.QtGui import *
-from PyQt4.QtCore import *
+from PyQt5.QtGui import QSyntaxHighlighter, QTextCharFormat, QColor
+from PyQt5.QtCore import QRegExp
 
 class MarkdownHighlighter(QSyntaxHighlighter):
     ''' QTextEdit requires this Syntax Highlighter '''

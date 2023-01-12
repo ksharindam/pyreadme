@@ -4,9 +4,9 @@ from pyreadme import __version__
 setup(
       name='pyreadme',
       version=__version__,
-      description='Simple markdown editor written in PyQt4',
-      long_description='Simple markdown editor written in PyQt4',
-      keywords='pyqt pyqt4 markdown-editor',
+      description='Simple markdown editor written in PyQt',
+      long_description='Simple markdown editor written in PyQt',
+      keywords='pyqt markdown-editor',
       url='http://github.com/ksharindam/pyreadme',
       author='Arindam Chaudhuri',
       author_email='ksharindam@gmail.com',

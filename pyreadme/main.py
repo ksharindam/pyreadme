@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 import sys, os
 import markdown
-from PyQt4 import QtCore
-from PyQt4.QtGui import ( QApplication, QMainWindow, QHBoxLayout, QWidget, QTextEdit,
+from PyQt5.QtWidgets import ( QApplication, QMainWindow, QHBoxLayout, QWidget, QTextEdit,
     QFileDialog
 )
 
@@ -95,7 +94,7 @@ class Window(QMainWindow, Ui_MainWindow):
         self.formatText('![', ']()')
 
     def openFile(self):
-        filename = QFileDialog.getOpenFileName(self, "Select File to Open", self.filename,
+        filename, ext = QFileDialog.getOpenFileName(self, "Select File to Open", self.filename,
                                       "All Files (*);;Markdown Files (*.md);;HTML Files (*.html *.htm)" )
         if filename == '': return
         self.loadFile(filename)
@@ -115,7 +114,7 @@ class Window(QMainWindow, Ui_MainWindow):
         self.togglePreviewMode(False)
 
     def saveFileAs(self):
-        filename = QFileDialog.getSaveFileName(self, "Select File to Save", self.filename,
+        filename, ext = QFileDialog.getSaveFileName(self, "Select File to Save", self.filename,
                                       "All Files (*);;Markdown Files (*.md)" )
         if filename == '': return
         self.filename = filename
@@ -132,7 +131,7 @@ class Window(QMainWindow, Ui_MainWindow):
 
     def exportHtml(self):
         name = os.path.splitext(self.filename)[0] + '.html'
-        filename = QFileDialog.getSaveFileName(self, "Select File to Save", name,
+        filename, ext = QFileDialog.getSaveFileName(self, "Select File to Save", name,
                                       "HTML Files (*.html *.htm)" )
         if filename == '': return
         text = self.textEdit.toPlainText()

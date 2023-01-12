@@ -82,7 +82,7 @@
   <action name="openFileAction">
    <property name="icon">
     <iconset resource="resources.qrc">
-     <normaloff>:/open.png</normaloff>:/open.png</iconset>
+     <normaloff>:/icons/open.png</normaloff>:/icons/open.png</iconset>
    </property>
    <property name="text">
     <string>Open</string>
@@ -94,7 +94,7 @@
   <action name="saveFileAction">
    <property name="icon">
     <iconset resource="resources.qrc">
-     <normaloff>:/save.png</normaloff>:/save.png</iconset>
+     <normaloff>:/icons/save.png</normaloff>:/icons/save.png</iconset>
    </property>
    <property name="text">
     <string>Save</string>
@@ -106,7 +106,7 @@
   <action name="saveFileAsAction">
    <property name="icon">
     <iconset resource="resources.qrc">
-     <normaloff>:/save-as.png</normaloff>:/save-as.png</iconset>
+     <normaloff>:/icons/save-as.png</normaloff>:/icons/save-as.png</iconset>
    </property>
    <property name="text">
     <string>Save As...</string>
@@ -118,7 +118,7 @@
   <action name="exportHtmlAction">
    <property name="icon">
     <iconset resource="resources.qrc">
-     <normaloff>:/web.png</normaloff>:/web.png</iconset>
+     <normaloff>:/icons/web.png</normaloff>:/icons/web.png</iconset>
    </property>
    <property name="text">
     <string>Export Html</string>
@@ -127,7 +127,7 @@
   <action name="closeAction">
    <property name="icon">
     <iconset resource="resources.qrc">
-     <normaloff>:/quit.png</normaloff>:/quit.png</iconset>
+     <normaloff>:/icons/quit.png</normaloff>:/icons/quit.png</iconset>
    </property>
    <property name="text">
     <string>Quit</string>
@@ -142,7 +142,7 @@
    </property>
    <property name="icon">
     <iconset resource="resources.qrc">
-     <normaloff>:/preview.png</normaloff>:/preview.png</iconset>
+     <normaloff>:/icons/preview.png</normaloff>:/icons/preview.png</iconset>
    </property>
    <property name="text">
     <string>Preview Mode</string>
@@ -151,7 +151,7 @@
   <action name="boldFmtAction">
    <property name="icon">
     <iconset resource="resources.qrc">
-     <normaloff>:/bold.png</normaloff>:/bold.png</iconset>
+     <normaloff>:/icons/bold.png</normaloff>:/icons/bold.png</iconset>
    </property>
    <property name="text">
     <string>Bold</string>
@@ -163,7 +163,7 @@
   <action name="italicFmtAction">
    <property name="icon">
     <iconset resource="resources.qrc">
-     <normaloff>:/italic.png</normaloff>:/italic.png</iconset>
+     <normaloff>:/icons/italic.png</normaloff>:/icons/italic.png</iconset>
    </property>
    <property name="text">
     <string>Italic</string>
@@ -175,7 +175,7 @@
   <action name="codeFmtAction">
    <property name="icon">
     <iconset resource="resources.qrc">
-     <normaloff>:/code.png</normaloff>:/code.png</iconset>
+     <normaloff>:/icons/code.png</normaloff>:/icons/code.png</iconset>
    </property>
    <property name="text">
     <string>Inline Code</string>
@@ -184,7 +184,7 @@
   <action name="ulistFmtAction">
    <property name="icon">
     <iconset resource="resources.qrc">
-     <normaloff>:/bullet.png</normaloff>:/bullet.png</iconset>
+     <normaloff>:/icons/bullet.png</normaloff>:/icons/bullet.png</iconset>
    </property>
    <property name="text">
     <string>Unordered List</string>
@@ -193,7 +193,7 @@
   <action name="olistFmtAction">
    <property name="icon">
     <iconset resource="resources.qrc">
-     <normaloff>:/number.png</normaloff>:/number.png</iconset>
+     <normaloff>:/icons/number.png</normaloff>:/icons/number.png</iconset>
    </property>
    <property name="text">
     <string>Ordered List</string>
@@ -202,7 +202,7 @@
   <action name="linkFmtAction">
    <property name="icon">
     <iconset resource="resources.qrc">
-     <normaloff>:/link.png</normaloff>:/link.png</iconset>
+     <normaloff>:/icons/link.png</normaloff>:/icons/link.png</iconset>
    </property>
    <property name="text">
     <string>Insert Link</string>
@@ -211,7 +211,7 @@
   <action name="imageFmtAction">
    <property name="icon">
     <iconset resource="resources.qrc">
-     <normaloff>:/image.png</normaloff>:/image.png</iconset>
+     <normaloff>:/icons/image.png</normaloff>:/icons/image.png</iconset>
    </property>
    <property name="text">
     <string>Insert Image</string>

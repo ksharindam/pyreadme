@@ -3,16 +3,17 @@ Name = PyReadMe Markdown Editor
 Executable Command = pyreadme
 Package Name = pyreadme
 Python Module Name = pyreadme
-Debian Dependency = python3-pyqt4
+Debian Dependency = python3-pyqt5
 Python Dependency = markdown
 
-Description = A Simple markdown editor written in PyQt4
+Description = A Simple markdown editor written in PyQt5
 Changes :
+v3.0    initial port to PyQt5
 v2.1    loads local images in markdown preview mode
 v2.0    Initial Port to python3
 
 ...........................................................................
-|   Copyright (C) 2017-2019 Arindam Chaudhuri <ksharindam@gmail.com>       |
+|   Copyright (C) 2017-2023 Arindam Chaudhuri <ksharindam@gmail.com>       |
 |                                                                          |
 |   This program is free software: you can redistribute it and/or modify   |
 |   it under the terms of the GNU General Public License as published by   |
@@ -28,7 +29,5 @@ v2.0    Initial Port to python3
 |   along with this program.  If not, see <http://www.gnu.org/licenses/>.  |
 ...........................................................................
 """
-# TODO:
-#       Text wrap, word wrap
 
-__version__ = '2.1'
+__version__ = '3.0'

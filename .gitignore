@@ -9,3 +9,5 @@ dist/
 # User created
 cache/
 debian/
+ui_*.py
+*_rc.py
